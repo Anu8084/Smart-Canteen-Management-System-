@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Habibi', serif;
+  background-color: orange; /* Set background color to orange */
+  background-image: url('../images/t2.png'); /* Add your background image */
+  background-repeat: no-repeat;
+  background-size: cover; /* Cover the entire area */
+  object-fit: cover;
+  background-position: top; /* Align to the top */
+}
+
+#wrapper {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: -25px;
+}
+
+.logo {
+  height: 100px; /* Adjust as needed */
+  margin-bottom: 15px;
+}
+
+.start-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:20px;
+  margin-bottom:-90px;
+}
+
+.user-container, .admin-container, .guest-container {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.user img, .admin img, .guest img {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  border-radius: 50%; /* Optional: make images round */
+}
+
+.text {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #FF7412;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+}

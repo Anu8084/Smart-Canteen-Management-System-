@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vojan Express - Login</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Habibi:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/adminlogin.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="left-panel">
+            <div class="logo-wrapper">
+                <img src="./images/logo.jpg" alt="Main Logo" style="height: 400px; width: 400px;">
+            </div>
+            <a href="login.html" class="login-btn">LOGIN</a>
+            <!-- <a href="register.html" class="register-btn">REGISTER</a> -->
+        </div>
+
+        <div class="right-panel">
+            <div class="header">
+                <div class="logo">
+                    <img src="./images/login.png" alt="Vojan Express Logo">
+                </div>
+                <h1>Welcome Back!</h1>
+            </div>
+            <form id="loginform">
+                <div class="form-group">
+                    <label for="rfid">Username</label>
+                    <input type="text" id="name" name="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login">LOGIN</button>
+            </form>
+            <div class="social-container">
+                <span>Get in Touch</span>
+                <div class="social-icons">
+                    <a href="#"><img src="./images/fb.png" alt="Facebook"></a>
+                    <a href="#"><img src="./images/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="./images/pinterest.png" alt="Pinterest"></a>
+                </div>
+            </div>
+        </div>
+    </div>`
+
+    <script>
+       document.getElementById("loginform").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const name = document.getElementById("name").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const response = await fetch("http://localhost:3000/adminlogin", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name: name, password: password })
+                });
+                
+                const data = await response.json();
+                alert(data.message); // Show message from server response
+                
+                if (response.ok) {
+                    // Store user data in localStorage
+                    localStorage.setItem('user', JSON.stringify(data.userFound));
+                    // Redirect on successful login
+                    window.location.href = 'dashboard.html';
+                }
+            } catch (error) {
+                alert("An error occurred while logging in.");
+                console.error("Login error:", error);
+            }
+        });
+    </script>
+</body>
+
+</html>

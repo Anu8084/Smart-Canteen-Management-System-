@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Items - Canteen Management System</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f8f8;
+        }
+
+        .special-items-container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            margin: 20px auto;
+            border: 2px solid orange;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border: 2px solid orange;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Grid layout for items */
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Item box styling */
+        .item {
+            background-color: #fff;
+            border: 2px solid orange;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .item h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .order-button {
+            background-color: orange;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: darkorange;
+        }
+
+        /* Active state styling */
+        .item.active {
+            border-color: #333;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="special-items-container">
+        <h1>Special Items</h1>
+        <div class="items">
+            <!-- Item 1 -->
+            <div class="item">
+                <img src="./images/chat.png" alt="Banarasi Chaat">
+                <h2>Special Item 1</h2>
+                <p class="description">A delicious special item that everyone loves.</p>
+                <p class="price">Rs. 100</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 2 -->
+            <div class="item">
+                <img src="./images/chicken chowmin.png" alt="Chinese Chowmins">
+                <h2>Special Item 2</h2>
+                <p class="description">Another fantastic special item, sure to satisfy.</p>
+                <p class="price">Rs. 120</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 3 -->
+            <div class="item">
+                <img src="./images/egg.png" alt="Boiled Egg">
+                <h2>Special Item 3</h2>
+                <p class="description">Tasty and mouth-watering special item.</p>
+                <p class="price">Rs. 90</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 4 -->
+            <div class="item">
+                <img src="./images/puri.png" alt="Puri Curry">
+                <h2>Special Item 4</h2>
+                <p class="description">A special treat for your taste buds.</p>
+                <p class="price">Rs. 110</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 5 -->
+            <div class="item">
+                <img src="./images/momo.png" alt="Special Momos">
+                <h2>Special Item 5</h2>
+                <p class="description">A delightful special item for everyone.</p>
+                <p class="price">Rs. 95</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 6 -->
+            <div class="item">
+                <img src="./images/dahi.png" alt="Mishti Dahi">
+                <h2>Special Item 6</h2>
+                <p class="description">Exquisite and delicious special item.</p>
+                <p class="price">Rs. 130</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 7 -->
+            <div class="item">
+                <img src="./images/hotlemon.png" alt="Special Hot Lemon">
+                <h2>Special Item 7</h2>
+                <p class="description">A savory special item that’s a must-try.</p>
+                <p class="price">Rs. 140</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 8 -->
+            <div class="item">
+                <img src="./images/rice.png" alt="Pappu Rice">
+                <h2>Special Item 8</h2>
+                <p class="description">A refreshing item for the summer season.</p>
+                <p class="price">Rs. 150</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 9 -->
+            <div class="item">
+                <img src="./images/paratha.png" alt="Punjabi Paratha">
+                <h2>Special Item 9</h2>
+                <p class="description">Perfect for satisfying your hunger pangs.</p>
+                <p class="price">Rs. 85</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 10 -->
+            <div class="item">
+                <img src="./images/samosa.png" alt="Desi Samosa">
+                <h2>Special Item 10</h2>
+                <p class="description">A unique blend of flavors for everyone.</p>
+                <p class="price">Rs. 115</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 11 -->
+            <div class="item">
+                <img src="./images/mangojuice.png" alt="Chilled Mango Juice">
+                <h2>Special Item 11</h2>
+                <p class="description">A popular choice among our regulars.</p>
+                <p class="price">Rs. 105</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+            <!-- Item 12 -->
+            <div class="item">
+                <img src="./images/momo.png" alt="Paneer Momos">
+                <h2>Special Item 12</h2>
+                <p class="description">Enjoy a wholesome, delicious meal.</p>
+                <p class="price">Rs. 125</p>
+                <button class="order-button" onclick="location.href='order.html'">Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Select all items
+        const items = document.querySelectorAll('.item');
+
+        // Loop through each item and add a click event listener
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove the 'active' class from all items
+                items.forEach(i => i.classList.remove('active'));
+                
+                // Add the 'active' class to the clicked item
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

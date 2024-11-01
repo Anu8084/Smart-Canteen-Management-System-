@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignan Smart Vojan Express</title>
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Habibi:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="./images/logo.jpg" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Your Items">
+        </div>
+        <div class="profile">
+            <button onclick="profile()" style="border-radius: 50%; "><img src="./images/profilef.png" alt="Profile Icon"></button>
+            <div style="position: fixed; right: 3rem; top: 6rem; background-color: black;">
+                <div style="display: flex; flex-direction: column;" >
+                    <img src="./images/profilef.png" alt="">
+                    <div id="guestid">Guest_ID</div>
+                    <div id="guestname">Guest</div>
+                    <div id="guestemail">Guest@gmail.com</div>
+                </div>
+            </div>
+            <a href="setting.html">Canteen User</a>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="site-main">
+                <aside class="slide">
+                    <h1 class="menu-title">Main Menu</h1>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                        <li><a href="menu.html"><i class="fas fa-book"></i> Menu</a></li>
+                        <li><a href="order.html"><i class="fas fa-receipt"></i> Order</a></li>
+                        <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="setting.html"><i class="fa-solid fa-info-circle"></i> Feedback</a></li>
+                    </ul>
+                </aside>
+                <div class="video">
+                    <video src="./images/canteen promo new.mp4" autoplay loop muted></video>
+                </div>
+                <aside class="right-sidebar">
+                    <div class="balance">
+                        <span>Your Balance</span>
+                        <div class="balance-container">
+                            <p>Balance <br> Rs. <strong>XXXXX</strong></p>
+                            <a href="form.html" class="blnc">Add Balance</a>
+                        </div>
+                    </div>
+                    <div class="rfid">
+                        <span>Your RFID</span>
+                        <div class="rfid-container">
+                            <p id="rfid">ID Number <br></p>
+                            <a href="form.html" class="id">Apply RFID</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="section-container">
+                <section class="category-section">
+                    <h2>Category</h2>
+                    <div class="categories">
+                        <div class="category-item">
+                            <img src="./images/v.png" alt="Veg Options">
+                            <button>Veg Options</button>
+                        </div>
+                        <div class="category-item">
+                            <img src="./images/non.png" alt="Non-Veg Options">
+                            <button>Non-Veg Options</button>
+                        </div>
+                        <div class="category-item">
+                            <img src="./images/drinks.png" alt="Drinks">
+                            <button>Drinks</button>
+                        </div>
+                    </div>
+                </section>
+                <section class="popular-dishes-section">
+                    <h2>Popular Dishes</h2>
+                    <div class="dishes">
+                        <div class="dish-item">
+                            <img src="./images/momo.png" alt="Buff Jhol Momo">
+                            <p>Buff Jhol Momo</p>
+                            <span>Rs. 150/per plate</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="dish-item">
+                            <img src="./images/samosa.png" alt="Samosa">
+                            <p>Samosa</p>
+                            <span>Rs. 25/per piece</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="dish-item">
+                            <img src="./images/chicken chowmin.png" alt="Chicken Chowmein">
+                            <p>Chicken Chowmein</p>
+                            <span>Rs. 120/per plate</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <a href="menu.html" class="view-more">View More</a>
+                    <button class="order-now"><a href="menu.html">Order Now</a></button>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <p>Get In Touch</p>
+            <div class="social-icons">
+                <a href="#"><img src="./images/fb.png" alt="Facebook"></a>
+                <a href="#"><img src="./images/insta.png" alt="Instagram"></a>
+                <a href="#"><img src="#"><img src="./images/pinterest.png" alt="Pinterest"></a>
+            </div>
+            <p>&copy; Created by DEV TITANS All Rights Reserved 2024. Licensing</p>
+        </div>
+    </footer>
+    <script>
+        function displayRFID() {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            const rfidContainer = document.getElementById('rfid');
+
+            if (userData && userData.rfid) {
+                rfidContainer.innerHTML = `ID Number <br> ${userData.rfid}`;
+            } else {
+                rfidContainer.innerHTML = 'ID Number <br> Not Available';
+            }
+        }
+
+
+        const retrievedJsonString = localStorage.getItem('user');
+        const retrievedUser = JSON.parse(retrievedJsonString);
+        console.log(retrievedUser)
+        document.getElementById('guestname').innerHTML=retrievedUser.userFound.name
+        document.getElementById('guestid').innerHTML=retrievedUser.userFound.id
+        document.getElementById('guestemail').innerHTML=retrievedUser.userFound.email
+
+        displayRFID();
+        function profile(){
+            
+
+        }
+        
+        
+
+    </script>
+</body>
+</html>

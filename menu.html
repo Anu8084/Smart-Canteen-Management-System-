@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vojan Express</title>
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Habibi,wght@0,400;1,400;" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Habibi:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril Fatface:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg" href="images/tab-logo.svg">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="./images/logo.jpg" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for menu items..." onkeyup="filterMenu()">
+        </div>
+        <div class="profile-content">
+            <div class="add-to-cart">
+                <a class="cart" href="#" >
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            <div class="profile">
+                <img src="images/profile.png" alt="Profile Icon">
+                <a href="setting.html">Canteen User</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="site-main">
+                <aside class="slide">
+                    <h1 class="menu-title">Main Menu</h1>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                        <li><a href="menu.html"><i class="fas fa-book"></i> Menu</a></li>
+                        <li><a href="order.html"><i class="fas fa-receipt"></i> Order</a></li>
+                        <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="contact.html"><i class="fas fa-phone"></i> Contact Us</a></li>
+                        <li><a href="special.html"><i class="fas fa-book"></i> Special Items</a></li>
+                    </ul>
+                </aside>
+
+                <div class="content">
+                    <!-- <div id="cart-popup" class="cart-count">
+                        <h4>Order Cart</h4>
+                        <table id="cart-items">
+                            <thead>
+                                <tr>
+                                    <th>Food</th>
+                                    <th>#</th>
+                                    <th>Price(Rs.)</th>
+                                    <th>Total(Rs.)</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <p>Total(Rs.) <span id="cart-total">0.00</span></p>
+                        <a class="cart-close" onclick="closeCart()"><i class="fas fa-times"></i></a>
+                    </div> -->
+                    <div class="blnc-container">
+                        <div class="topic">
+                            <span>Your Balance</span>
+                            <span>Your RFID</span>
+                        </div>
+                        <div class="detail-container">
+                            <div class="balance-container">
+                                <p>Balance <br> Rs. <strong>XXXXX</strong></p>
+                                <button><a href="form.html" class="blnc">Add Balance</a></button>
+                            </div>
+                            <div class="rfid-container">
+                                <p>ID Number <br> <span id="rfid-container">XXXXXXXXXXX</span> </p>
+                                <button><a href="setting.html" class="id">Add Details</a></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video"></div>
+                    <video class="nv" src="./images/canteen Info.mp4" autoplay loop muted >
+                        <!-- Your browser does not support the video tag. -->
+                      </video>
+                    </div> 
+                    
+                </div>
+            </div>
+            <section class="veg">
+                <h2>Veg Options</h2>
+                <div class="row">
+                    <div class="veg-options">
+                        <img src="./images/puri.png" alt="puri">
+                        <p>Puri Tarkari</p>
+                        <div class="icon">
+                            <span>Rs.90/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="Puri" data-price="90">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veg-options">
+                        <img src="./images/samosa.png" alt="samosa">
+                        <p>Samosa</p>
+                        <div class="icon">
+                            <span>Rs.100/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="Samosa" data-price="100">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veg-options">
+                        <img src="./images/chicken chowmin.png" alt="noodles">
+                        <p>Noodles</p>
+                        <div class="icon">
+                            <span>Rs.50/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="noodles" data-price="50">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="veg-options">
+                        <img src="./images/paratha.png" alt="paratha">
+                        <p>Aloo Paratha</p>
+                        <div class="icon">
+                            <span>Rs.50/per piece</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="paratha" data-price="50">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veg-options">
+                        <img src="./images/pakoda.png" alt="pakoda">
+                        <p>Pakoda</p>
+                        <div class="icon">
+                            <span>Rs.50/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="pakoda" data-price="50">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="veg-options">
+                        <img src="./images/chat.png" alt="samosa-chaat">
+                        <p>Samosa Chaat</p>
+                        <div class="icon">
+                            <span>Rs.80/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="samosa-chaat" data-price="80">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="non-veg">
+                <h2>Non-Veg Options</h2>
+                <div class="row">
+                    <div class="non-veg-options">
+                        <img src="./images/nonveg.png" alt="pakoda">
+                        <p>Chicken Pakoda</p>
+                        <div class="icon">
+                            <span>Rs.80/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="pakoda" data-price="80">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="non-veg-options">
+                        <img src="./images/egg.png" alt="egg">
+                        <p>Boiled Egg</p>
+                        <div class="icon">
+                            <span>Rs.30/per piece</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="egg" data-price="30">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="non-veg-options">
+                        <img src="./images/rice.png" alt="fryrice">
+                        <p>Egg Fry Rice</p>
+                        <div class="icon">
+                            <span>Rs.110/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="fryrice" data-price="110">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="non-veg-options">
+                        <img src="./images/dahibhalle.png" alt="syabhale">
+                        <p>Chicken Syabhale</p>
+                        <div class="icon">
+                            <span>Rs.35/per piece</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="syabhale" data-price="35">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="non-veg-options">
+                        <img src="./images/momo.png" alt="momo">
+                        <p>Chicken Momo</p>
+                        <div class="icon">
+                            <span>Rs.160/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="momo" data-price="160">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="non-veg-options">
+                        <img src="./images/chicken chowmin.png" alt="chowmein">
+                        <p>Chicken Chowmein</p>
+                        <div class="icon">
+                            <span>Rs.120/per plate</span>
+                            <div class="button">
+                                <button class="add-to-cart" data-name="chowmein" data-price="120">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="drinks">
+                <h2>Drinks</h2>
+                <div class="drinks-category">
+                    <div class="drink">
+                        <h3>Hot Drinks</h3>
+                        <h3>Cold Drinks</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="./images/miktea.png" alt="Milk Tea">
+                            <h4>Milk Tea</h4>
+                            <div class="drink-info">
+                                <p>Rs. 25</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Milk Tea" data-price="25">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img src="./images/coke.png" alt="Coke">
+                            <h4>Coke</h4>
+                            <div class="drink-info">
+                                <p>Rs. 35</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Coke" data-price="35">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drinks-category">
+                    <div class="row">
+                        <div class="col">
+                            <img src="./images/blacktea.png" alt="Black Tea">
+                            <h4>Black Tea</h4>
+                            <div class="drink-info">
+                                <p>Rs. 20</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Black Tea" data-price="20">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img src="./images/dahi.png" alt="Dahi">
+                            <h4>Dahi</h4>
+                            <div class="drink-info">
+                                <p>Rs. 40</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Dahi" data-price="40">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drinks-category">
+                    <div class="row">
+                        <div class="col">
+                            <img src="./images/coffee.png" alt="Coffee">
+                            <h4>Coffee</h4>
+                            <div class="drink-info">
+                                <p>Rs. 35</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Coffee" data-price="35">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img src="./images/lassi.png" alt="Lassi">
+                            <h4>Lassi</h4>
+                            <div class="drink-info">
+                                <p>Rs. 90</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Coffee" data-price="90">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drinks-category">
+                    <div class="row">
+                        <div class="col">
+                            <img src="./images/hotlemon.png" alt="Hot Lemon">
+                            <h4>Hot Lemon</h4>
+                            <div class="drink-info">
+                                <p>Rs. 20</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Hot Lemon" data-price="20">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img src="./images/mangojuice.png" alt="Mango Juice">
+                            <h4>Mango Juice</h4>
+                            <div class="drink-info">
+                                <p>Rs. 60</p>
+                                <div class="button">
+                                    <button class="add-to-cart" data-name="Mango Juice" data-price="60">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </section>
+            <div class="chatbot-container" id="chatbot-container" style="display: none;">
+                <div class="chatbot-header">
+                    <h2>Chatbot</h2>
+                    <button onclick="toggleChatbot()">X</button> <!-- Button to close the chatbot -->
+                </div>
+                <div class="chatbot-messages" id="chatbot-messages">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <input type="text" id="user-input" placeholder="Type your question..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+            
+            <button class="chatbot-toggle-button" onclick="toggleChatbot()">Chat with us!</button> <!-- Button to open/close the chatbot -->
+    </main>
+    <footer>
+        <div class="footer">
+            <p>Get In Touch</p>
+            <div class="social-icons">
+                <a href="#"><img src="./images/fb.png" alt="Facebook"></a>
+                <a href="#"><img src="./images/insta.png" alt="Instagram"></a>
+                <a href="#"><img src="./images/pinterest.png" alt="pinterest"></a>
+            </div>
+            <p>&copy; DEV TITANS . All Rights Reserved 2024. Licensing</p>
+        </div>
+    </footer>
+
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+      
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+
+                // Retrieve cart items from localStorage or initialize as empty array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item is already in the cart
+                const existingItem = cart.find(item => item.name === itemName);
+
+                if (existingItem) {
+                    // If the item exists, increase its quantity
+                    existingItem.quantity += 1;
+                } else {
+                    // If it's a new item, add it to the cart with quantity 1
+                    cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Update the cart count display
+                updateCartCount();
+                alert(itemName + " added to cart!");
+            });
+        });
+
+        // Function to update the cart count on the menu page
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        // Run this function on page load to set initial cart count
+        updateCartCount();
+
+        // JavaScript to display the cart items on the order page
+        function displayCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartTableBody = document.querySelector('#cart-items tbody');
+            const cartTotalDisplay = document.getElementById('cart-total');
+
+            // Clear the table body and initialize total price
+            cartTableBody.innerHTML = '';
+            let total = 0;
+
+            // Populate the table with cart items
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price}</td>
+                    <td>${(item.price * item.quantity).toFixed(2)}</td>
+                `;
+                cartTableBody.appendChild(row);
+                total += item.price * item.quantity;
+            });
+
+            // Update the total price display
+            cartTotalDisplay.textContent = total.toFixed(2);
+        }
+        
+        const qaPairs = [
+    { question: "What are your hours?", answer: "We are open from 8 AM to 8 PM." },
+    { question: "What is the menu?", answer: "You can view our menu above." },
+    { question: "Do you offer vegetarian options?", answer: "Yes, we have a variety of vegetarian dishes." },
+    { question: "Can I make a reservation?", answer: "Reservations are not required but recommended." },
+    { question: "What payment methods do you accept?", answer: "We accept cash and major credit cards." },
+    { question: "Do you have delivery?", answer: "Yes, we offer delivery services." },
+    { question: "Is there parking available?", answer: "Yes, we have free parking available." },
+    { question: "Can I order online?", answer: "Yes, you can order directly from our website." },
+    { question: "What is your cancellation policy?", answer: "You can cancel your order up to an hour before pickup." },
+    { question: "Do you have any specials today?", answer: "Please check the menu for today's specials." },
+    { question: "Is there Wi-Fi available?", answer: "Yes, we offer free Wi-Fi for all customers." },
+    { question: "Do you serve alcohol?", answer: "Yes, we have a selection of beers and wines." },
+    { question: "Can I see the dessert menu?", answer: "Sure, our dessert menu is included in the main menu." },
+    { question: "What if I have food allergies?", answer: "Please inform our staff about any allergies." },
+    { question: "Can I take food to go?", answer: "Yes, all items can be ordered to go." },
+    { question: "What should I do if I have a complaint?", answer: "Please speak to our manager, and we will resolve it." },
+];
+
+function sendMessage() {
+    const userInput = document.getElementById("user-input").value.toLowerCase();
+    const messagesContainer = document.getElementById("chatbot-messages");
+
+    // Display user message
+    const userMessage = document.createElement("p");
+    userMessage.textContent = `You: ${document.getElementById("user-input").value}`;
+    messagesContainer.appendChild(userMessage);
+
+    // Check for response
+    const response = qaPairs.find(qa => userInput.includes(qa.question.toLowerCase()));
+    const botMessage = document.createElement("p");
+    if (response) {
+        botMessage.textContent = `Bot: ${response.answer}`;
+    } else {
+        botMessage.textContent = "Bot: I'm sorry, I don't have an answer for that.";
+    }
+    messagesContainer.appendChild(botMessage);
+
+    // Clear the input field
+    document.getElementById("user-input").value = '';
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll
+}
+
+function toggleChatbot() {
+    const chatbotContainer = document.getElementById("chatbot-container");
+    if (chatbotContainer.style.display === "none") {
+        chatbotContainer.style.display = "block"; // Show the chatbot
+    } else {
+        chatbotContainer.style.display = "none"; // Hide the chatbot
+    }
+}
+
+
+function filterMenu() {
+    const searchInput = document.getElementById("search-input").value.toLowerCase();
+    const menuItems = document.querySelectorAll(".menu-item");
+
+    menuItems.forEach(item => {
+        const itemName = item.getAttribute("data-name").toLowerCase();
+        if (itemName.includes(searchInput)) {
+            item.style.display = ""; // Show item
+        } else {
+            item.style.display = "none"; // Hide item
+        }
+    });
+}
+
+       
+
+    </script>
+
+</body>
+
+</html>

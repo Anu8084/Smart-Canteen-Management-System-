@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vojan Express</title>
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Habibi:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/start.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <h1 style="font-size: 40px; color: #FF7412; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Explore the taste of Vignan</h1>
+        </header>
+        <div class="start-container">
+            <div class="user-container">
+                <div class="user">
+                    <img src="./images/users.png" alt="user">
+                    <a href="register.html" class="text">USER</a>
+                </div>
+            </div>
+            <div class="admin-container">
+                <div class="admin">
+                    <img src="./images/admi.png" alt="admin">
+                    <a href="./admin/adminlogin.html" class="text">ADMIN</a>
+                </div>
+            </div>
+            <div class="guest-container">
+                <div class="guest">
+                    <img src="./images/g.png" alt="guest">
+                    <a href="index1.html" class="text" onclick="setUserType('guest')">GUEST</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setUserType(type) {
+            localStorage.setItem('userType', type);
+            // Redirect to the index page for guest
+            if (type === 'guest') {
+                window.location.href = 'index.html'; // Redirect to the index page
+            }
+        }
+    </script>
+</body>
+
+</html>

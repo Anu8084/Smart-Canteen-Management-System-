@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body>
+    <header>
+        <h1>Your Order</h1>
+    </header>
+    <main>
+        <table id="cart-items">
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Price (Rs.)</th>
+                    <th>Total (Rs.)</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <!-- Cart items will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <p id="empty-cart-message" style="display: none;">Your cart is empty. Please add items to your cart.</p>
+        <p>Total Amount: Rs. <span id="cart-total">0.00</span></p>
+
+        <!-- Payment Option Section -->
+        <section id="payment-section">
+            <h2>Select Payment Method</h2>
+            <div>
+                <input type="radio" id="cash" name="payment-method" value="Cash" checked>
+                <label for="cash">Cash</label>
+            </div>
+            <div>
+                <input type="radio" id="card" name="payment-method" value="Card">
+                <label for="card">Credit/Debit Card</label>
+            </div>
+            <div>
+                <input type="radio" id="QR" name="payment-method" value="QR" onclick="toggleQRCode()">
+                <label for="QR">QR CODE SCANNER</label>
+            </div>
+            <div id="qr-code-container" style="display: none;">
+                <img src="./images/payment.jpg" alt="QR Code">
+            </div>
+        </section>
+
+        <button onclick="checkout()">Checkout</button>
+    </main>
+
+    <script>
+        function toggleQRCode() {
+            const qrContainer = document.getElementById('qr-code-container');
+            qrContainer.style.display = document.getElementById('QR').checked ? 'block' : 'none';
+        }
+
+        // Function to fetch cart items and display them
+        function displayCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartBody = document.getElementById('cart-body');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            cartBody.innerHTML = '';
+            let totalAmount = 0;
+
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                cart.forEach(item => {
+                    const total = item.price * item.quantity;
+                    totalAmount += total;
+                    cartBody.innerHTML += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>
+                                <button onclick="updateQuantity('${item.name}', -1)">-</button>
+                                <span id="qty-${item.name}">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.name}', 1)">+</button>
+                            </td>
+                            <td>${item.price}</td>
+                            <td id="total-${item.name}">${total.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            document.getElementById('cart-total').innerText = totalAmount.toFixed(2);
+        }
+
+        function updateQuantity(itemName, change) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(i => i.name === itemName);
+
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 0) {
+                    item.quantity = 0;
+                    alert('Quantity cannot be less than 0.');
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalAmount = parseFloat(document.getElementById('cart-total').innerText);
+
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart before checking out.');
+                return;
+            }
+
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+            fetch('http://localhost:5000/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userId: 'sampleUserId',
+                    items: cart,
+                    totalAmount: totalAmount,
+                    paymentMethod: paymentMethod
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                localStorage.removeItem('cart');
+                displayCartItems();
+            })
+            .catch(error => {
+                console.error('Error during checkout:', error);
+                alert('An error occurred during checkout. Please try again.');
+            });
+        }
+
+        window.onload = displayCartItems;
+    </script>
+</body>
+
+</html>
